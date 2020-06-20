@@ -1,0 +1,11 @@
+<form [formGroup]="subForm" (ngSubmit)="onSubmit(dynamicSubForm)" #dynamicSubForm="ngForm">
+    <div *ngFor="let control of options; index as i;" class="form-row">
+        <app-dynamic-form-control 
+            [control]="control" 
+            [index]="i" 
+            [form]="subForm"
+            [options]="options"
+            [currentSubForm]="dynamicSubForm">
+        </app-dynamic-form-control>
+    </div>
+</form>

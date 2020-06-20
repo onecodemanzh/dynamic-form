@@ -1,0 +1,38 @@
+<div class="row">
+    <div class="col-xs-5 col-xs-offset-4">
+
+        <!-- <ng-container [formGroup]="form">
+            <ng-template #input let-key="key">
+                <input type="text" pInputText [formControlName]="key" />
+            </ng-template>
+        </ng-container> -->
+
+        <div class="row ">
+            <div class="col-xs-5 border form-1">
+                <span>表单1</span>
+                <div dynamic-sub-form [options]="options" [form]="form" name="subform2" (onChange)="getValue1($event)">
+                </div>
+                <div class="border no-margin">
+                    <span>表单2</span>
+                    <div dynamic-sub-form [options]="options" [form]="form" name="subform1"
+                        (onChange)="getValue1($event)"></div>
+                </div>
+            </div>
+            <div class="col-xs-5 border form-2">
+                <span>表单3</span>
+                <div dynamic-sub-form [options]="options" [form]="form" name="subform" (onChange)="getValue1($event)">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-8 border form-3">
+                <span>表单4</span>
+                <!-- <a dynamic-form [options]="options" [(ngModel)]="formValue" [form]="form" (onChange)="getValue($event)"></a> -->
+                <dynamic-form [options]="options" [(ngModel)]="formValue" [form]="form" (onChange)="getValue($event)">
+                </dynamic-form>
+            </div>
+
+        </div>
+    </div>
+    <button (click)="submit()">提交</button>
+</div>

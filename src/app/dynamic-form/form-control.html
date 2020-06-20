@@ -1,0 +1,34 @@
+<div [formGroup]="form">
+  <label [attr.for]="control.key">{{control.label}}</label>
+
+  <div [ngSwitch]="control.controlType">
+    
+    <ng-container *ngIf="!control.ref; else elseTemplate">
+      <input *ngSwitchCase="'textbox'" [formControlName]="control.key"
+        [autocomplete]="control.autocomplete ? 'on' : 'off'"
+        [disabled]="control.disabled"
+        [readonly]="control.readonly"
+        [minlength]="control.minlength"
+        [maxlength]="control.maxlength"
+        [tabindex]="1"
+        [id]="control.key"
+        [autofocus]="(index + 1 === 1) && primary"
+        [type]="control.type"
+        [attr.focus-handle]="control.key"
+        (keyup.enter)="submit()">        
+      <select [id]="control.key" *ngSwitchCase="'select'" [formControlName]="control.key"
+        [disabled]="control.disabled"
+        [minlength]="control.minlength"
+        [maxlength]="control.maxlength"
+        [tabindex]="1"
+        [id]="control.key"
+        [attr.focus-handle]="control.key"
+        (keyup.enter)="submit()">
+        <option *ngFor="let opt of control.options" [value]="opt.key" (keyup.enter)="submit()">{{opt.value}}</option>
+      </select>
+    </ng-container>
+  </div>
+  <ng-container #elseTemplate *ngTemplateOutlet="control.ref; context: control"></ng-container>
+  <div class="errorMessage" *ngIf="status?.hasError">{{ control.label }} {{ status.message }}</div>
+
+</div>
