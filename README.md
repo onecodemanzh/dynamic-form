@@ -1,3 +1,5 @@
+# 使用方法和注意事项
+腾讯云+社区(https://cloud.tencent.com/developer/article/1648724)
 # RichEdit
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.26.
